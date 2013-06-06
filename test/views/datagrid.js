@@ -343,6 +343,13 @@ describe('Datagrid', function() {
         {foo: 'bar2', rank: 'fifth'}
       ]);
     });
+
+    it('shoult update table after sorting', function() {
+        datagrid.$el.find('thead th:first').html().should.contain('Foo');
+        datagrid.$el.find('thead th:first').html().should.not.contain('icon-chevron-up');
+        datagrid.sort('foo');
+        datagrid.$el.find('thead th:first').html().should.contain('icon-chevron-up');
+    });
   });
 
   describe('rendering', function() {
