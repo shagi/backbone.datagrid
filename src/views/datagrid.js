@@ -9,7 +9,7 @@ var Datagrid = Backbone.View.extend({
       emptyMessage:   '<p>No results found.</p>'
     });
 
-    this.listenTo(this.collection, 'add remove reset sort', this.render);
+    this.listenTo(this.collection, 'add remove reset', this.render);
     this._prepare();
   },
 
@@ -89,6 +89,7 @@ var Datagrid = Backbone.View.extend({
   _sort: function() {
     if (this.options.inMemory) {
       this._sortInMemory();
+      this.render();
     } else {
       this._sortRequest();
     }
